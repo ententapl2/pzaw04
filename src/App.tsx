@@ -3,7 +3,8 @@ import styles from './App.module.css';
 interface MovieProps {title: string, year:number, imagePath:string}
 interface SongProps {title: string, author: string, imagePath:string}
 interface BookProps {title: string, author:string, year:number, pages:number, imagePath:string}
-
+interface AlbumProps {title: string, band:string, genre:string, year:number, songs: AlbumSongProps[], imagePath: string, }
+interface AlbumSongProps {title: string, duration: number}
 
 function Movie(props: MovieProps) {
   
@@ -33,6 +34,32 @@ function Book(props: BookProps) {
       <h2>{props.pages} stron</h2>
     </figcaption>
   </figure>
+  </>;
+}
+
+function AlbumSong(props: AlbumSongProps) {
+  return <>
+  <li>{props.title} ; {props.duration} min</li>
+  
+  </>;
+}
+
+function Album(props: AlbumProps) {
+  return <>
+    <figure className={styles.Album}>
+      <img src={props.imagePath} />
+      <figcaption>
+        <h1>{props.title}, {props.year}</h1>
+        <h2>{props.band}</h2>
+        <h2>{props.genre} </h2>
+        <ol>
+          {props.songs.map(function (song) {
+            return <AlbumSong title={song.title} duration={song.duration} />;
+          })}
+        </ol>
+      </figcaption>
+
+    </figure>
   </>;
 }
 
@@ -109,6 +136,45 @@ export default function App() {
         year={2012}
         pages={200}
         imagePath='/images/book_3.jpg' />
+    </section>
+
+    <h1>Albumy</h1>
+    <section>
+      <Album 
+        title='Random Access Memories'
+        band='Daft Punk'
+        genre='Funk'
+        year={2013}
+        songs={[
+          {title: 'Giorgio by Moroder', duration: 9.05},
+          {title: 'Get Lucky', duration: 6.10},
+        ]}
+        imagePath='/images/album_1.jpg' />
+
+        <Album
+          title='Time out'
+          band='The Dave Brubeck Quartet'
+          year={1959}
+          genre='Jazz'
+          songs={[
+            {title: 'Take five', duration: 5.24},
+            {title: 'Pick Up Sticks', duration: 4.16},
+            {title: 'Three to Get Ready', duration: 5.24}
+          ]}
+          imagePath='/images/album_2.jpg' />
+
+          <Album
+            title='Master of Puppets'
+            band='Metallica'
+            year={1986}
+            genre='Heavy metal'
+            songs={[
+              {title: 'Battery', duration: 5.12},
+              {title: 'Leper Messiah', duration: 5.40},
+              {title: 'Welcome home(Sanitarium)', duration: 6.27}
+            ]}
+            imagePath='/images/album_3.jpg' />
+
     </section>
 
 
