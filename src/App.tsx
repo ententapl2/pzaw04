@@ -2,6 +2,7 @@ import styles from './App.module.css';
 
 interface MovieProps {title: string, year:number, imagePath:string}
 interface SongProps {title: string, author: string, imagePath:string}
+interface BookProps {title: string, author:string, year:number, pages:number, imagePath:string}
 
 
 function Movie(props: MovieProps) {
@@ -18,6 +19,21 @@ function Movie(props: MovieProps) {
   </figure>
   </>;
 
+}
+
+
+function Book(props: BookProps) {
+  return <>
+  
+  <figure className={styles.Book}>
+    <img src={props.imagePath} />
+    <figcaption>
+      <h1>{props.title}</h1>
+      <h2>{props.year}</h2>
+      <h2>{props.pages} stron</h2>
+    </figcaption>
+  </figure>
+  </>;
 }
 
 function Song(props: SongProps) {
@@ -71,6 +87,28 @@ export default function App() {
           title='Perfect'
           author='Ed Sheeran'
           imagePath='/images/song_3.jpg' />
+    </section>
+
+    <h1>Książki</h1>
+    <section>
+      <Book
+        title="Społeczeństwo i Polityka"
+        author='Konstanty Adam Wojtaszczyk'
+        year={2018}
+        pages={510}
+        imagePath='/images/book_1.jpg' />
+      <Book
+        title="Historia polityczna Polski"
+        author='Antoni Dudek'
+        year={2023}
+        pages={1100}
+        imagePath='/images/book_2.jpg' />
+      <Book
+        title="Ustroje państw współczesnych"
+        author='Paweł Sarnecki'
+        year={2012}
+        pages={200}
+        imagePath='/images/book_3.jpg' />
     </section>
 
 
