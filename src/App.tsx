@@ -39,7 +39,10 @@ function Book(props: BookProps) {
 
 function AlbumSong(props: AlbumSongProps) {
   return <>
-  <li>{props.title} ; {props.duration} min</li>
+  <li>
+    <div>{props.title}</div>
+    <div>{props.duration} min</div>
+  </li>
   
   </>;
 }

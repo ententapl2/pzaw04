@@ -35,6 +35,20 @@ section {
 
 }
 
-.Album li {
-    text-align: left;
+.Album {
+    & ol {
+        padding-left: 0;
+    }
+
+    & li {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+        font-size: small;   
+
+        & > div:nth-child(2) {
+            margin-left: 1em;
+        }
+    }
 }
