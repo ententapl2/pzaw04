@@ -1,6 +1,6 @@
 import styles from './App.module.css';
 
-interface MovieProps {title: string, year:number, imagePath:string}
+interface MovieProps {title: string, year:number, imagePath:string, rating: number}
 interface SongProps {title: string, author: string, imagePath:string}
 interface BookProps {title: string, author:string, year:number, pages:number, imagePath:string}
 interface AlbumProps {title: string, band:string, genre:string, year:number, songs: AlbumSongProps[], imagePath: string, }
@@ -85,15 +85,30 @@ export default function App() {
     {
       title: 'Avengers: Endgame',
       year:2016,
-      imagePath:'/images/movie_1.jpg'
+      imagePath:'/images/movie_1.jpg',
+      rating: 6,
     } as MovieProps,
     {title: 'The Hunt',
       year: 2020,
-      imagePath:'/images/movie_2.webp'
+      imagePath:'/images/movie_2.webp',
+      rating: 7,
     },
     {title: 'Ice Age: The Great Egg-Scapade',
       year:2020,
-      imagePath:'/images/movie_3.webp'
+      imagePath:'/images/movie_3.webp',
+      rating: 9
+    },
+    {
+      title: 'The Gofather',
+      year:1972,
+      imagePath: '/images/movie_4.jpg',
+      rating: 10
+    },
+    {
+      title: 'Matrix',
+      year: 1999,
+      imagePath: '/images/movie_5.jpg',
+      rating: 2
     }
   ];
 
@@ -153,7 +168,8 @@ export default function App() {
       songs: [
         {title: 'Battery', duration: 5.12},
         {title: 'Leper Messiah', duration: 5.40},
-        {title: 'Welcome home(Sanitarium)', duration: 6.27}
+        {title: 'Welcome home(Sanitarium)', duration: 6.27},
+        {title: 'Disposable Heroes', duration: 8.17}
       ],
       imagePath:'/images/album_3.jpg'
     }
@@ -168,6 +184,11 @@ export default function App() {
       {movies.map(movie => <Movie {...movie}/>
       )}
 
+    </section>
+
+    <h1>Filmy po 2010 roku</h1>
+    <section>
+      {movies.filter(movie => movie.year > 2010).map(movie => <Movie {...movie} /> )}
     </section>
 
     <h1>Piosenki</h1>
@@ -192,10 +213,20 @@ export default function App() {
       
     </section>
 
+    <h1>Książki najnowsze</h1>
+    <section>
+        {books.sort((a, b) => (b.year - a.year)).map(book => <Book {...book} /> )}
+    </section>
+
     <h1>Albumy</h1>
     <section>
       {albums.map(album => <Album {...album} />)}
 
+    </section>
+
+    <h1>Album z największą ilością utworów</h1>
+    <section>
+      <Album {...albums.sort((a, b) => b.songs.length - a.songs.length).at(0)!} />
     </section>
 
 
