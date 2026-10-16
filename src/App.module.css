@@ -1,7 +1,9 @@
 section {
     display:flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
+    overflow-x: auto;
+    padding:1em;
 }
 
 .Movie, .Song, .Book, .Album {
