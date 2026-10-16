@@ -81,25 +81,92 @@ function Song(props: SongProps) {
 export default function App() {
 
 
+  const movies: MovieProps[] = [
+    {
+      title: 'Avengers: Endgame',
+      year:2016,
+      imagePath:'/images/movie_1.jpg'
+    } as MovieProps,
+    {title: 'The Hunt',
+      year: 2020,
+      imagePath:'/images/movie_2.webp'
+    },
+    {title: 'Ice Age: The Great Egg-Scapade',
+      year:2020,
+      imagePath:'/images/movie_3.webp'
+    }
+  ];
+
+  const books:  BookProps[] = [
+    {
+      title: 'Społeczeństwo i Polityka',
+      author: 'Konstanty Adam Wojtaszczyk',
+      year:2018,
+      pages:510,
+      imagePath:'/images/book_1.jpg'
+    },
+    {
+      title:'Historia polityczna Polski',
+      author: 'Antoni Dudek',
+      year: 2023,
+      pages:110,
+      imagePath: '/images/book_2.jpg'
+    },
+    {
+      title:'Ustroje panstw współczesnych',
+      author: 'Paweł Sarnecki',
+      year: 2012,
+      pages: 200,
+      imagePath: '/images/book_3.jpg'
+    }
+  ];
+
+  const albums: AlbumProps[] = [
+    {
+      title: 'Random Access Memories',
+      band: 'Daft Punk',
+      genre:'Funk',
+      year:2013,
+      songs:[
+        {title: 'Giorgio by Moroder', duration: 9.05},
+        {title: 'Get Lucky', duration:6.10}
+      ],
+      imagePath: '/images/album_1.jpg'
+    },
+    {
+      title:'Time out',
+      band: 'The Dave Brubeck Quartet',
+      year:1959,
+      genre: 'Jazz',
+      songs:[
+        {title: 'Take five', duration: 5.24},
+        {title: 'Puck Up Sticks', duration: 4.16},
+        {title: 'Three to Get Ready', duration: 5.24}
+      ],
+      imagePath:'/images/album_2.jpg'
+    },
+    {
+      title: 'Master of Puppets',
+      band: 'Metallica',
+      year: 1986,
+      genre: 'Heavy metal',
+      songs: [
+        {title: 'Battery', duration: 5.12},
+        {title: 'Leper Messiah', duration: 5.40},
+        {title: 'Welcome home(Sanitarium)', duration: 6.27}
+      ],
+      imagePath:'/images/album_3.jpg'
+    }
+  ];
+
+
   return (<>
 
     <h1>Filmy</h1>
     <section>
 
-      <Movie 
-        title='Avengers: Endgame'
-        year={2019}
-        imagePath='/images/movie_1.jpg' /> 
-
-      <Movie 
-        title='The Hunt'
-        year={2020}
-        imagePath='/images/movie_2.webp' /> 
-
-      <Movie 
-        title='Ice Age: The Great Egg-Scapade'
-        year={2016}
-        imagePath='/images/movie_3.webp' /> 
+      {movies.map(movie => <Movie {...movie}/>
+      )}
 
     </section>
 
@@ -121,62 +188,13 @@ export default function App() {
 
     <h1>Książki</h1>
     <section>
-      <Book
-        title="Społeczeństwo i Polityka"
-        author='Konstanty Adam Wojtaszczyk'
-        year={2018}
-        pages={510}
-        imagePath='/images/book_1.jpg' />
-      <Book
-        title="Historia polityczna Polski"
-        author='Antoni Dudek'
-        year={2023}
-        pages={1100}
-        imagePath='/images/book_2.jpg' />
-      <Book
-        title="Ustroje państw współczesnych"
-        author='Paweł Sarnecki'
-        year={2012}
-        pages={200}
-        imagePath='/images/book_3.jpg' />
+      {books.map(book => <Book {...book} /> )}
+      
     </section>
 
     <h1>Albumy</h1>
     <section>
-      <Album 
-        title='Random Access Memories'
-        band='Daft Punk'
-        genre='Funk'
-        year={2013}
-        songs={[
-          {title: 'Giorgio by Moroder', duration: 9.05},
-          {title: 'Get Lucky', duration: 6.10},
-        ]}
-        imagePath='/images/album_1.jpg' />
-
-        <Album
-          title='Time out'
-          band='The Dave Brubeck Quartet'
-          year={1959}
-          genre='Jazz'
-          songs={[
-            {title: 'Take five', duration: 5.24},
-            {title: 'Pick Up Sticks', duration: 4.16},
-            {title: 'Three to Get Ready', duration: 5.24}
-          ]}
-          imagePath='/images/album_2.jpg' />
-
-          <Album
-            title='Master of Puppets'
-            band='Metallica'
-            year={1986}
-            genre='Heavy metal'
-            songs={[
-              {title: 'Battery', duration: 5.12},
-              {title: 'Leper Messiah', duration: 5.40},
-              {title: 'Welcome home(Sanitarium)', duration: 6.27}
-            ]}
-            imagePath='/images/album_3.jpg' />
+      {albums.map(album => <Album {...album} />)}
 
     </section>
 
