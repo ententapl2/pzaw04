@@ -11,6 +11,7 @@ section {
     cursor: pointer;
     transition: all linear 0.31s;
     padding: 1em;
+    position: relative;
     
 
     &:hover {
@@ -53,4 +54,15 @@ section {
             margin-left: 1em;
         }
     }
+}
+
+.RecommendedLabel {
+
+    position: absolute;
+    top:0.3rem;
+    padding:0.7rem;
+    border-radius: 24px;
+    background: rgb(255, 174, 0);
+    color:white;
+
 }

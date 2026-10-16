@@ -16,6 +16,7 @@ function Movie(props: MovieProps) {
           <h1>{props.title}</h1>
           <h2>{props.year}</h2>
       </figcaption>
+      {props.rating > 8 && <h3 className={styles.RecommendedLabel}>Polecany</h3>}
 
   </figure>
   </>;
@@ -31,7 +32,6 @@ function Book(props: BookProps) {
     <figcaption>
       <h1>{props.title}</h1>
       <h2>{props.year}</h2>
-      <h2>{props.pages} stron</h2>
     </figcaption>
   </figure>
   </>;
